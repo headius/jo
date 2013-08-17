@@ -1,6 +1,4 @@
-require 'target/jo-1.0-SNAPSHOT.jar'
-
-com.headius.jo.JoLibrary.new.load(JRuby.runtime, false)
+require 'jo'
 
 include Jo
 
