@@ -2,6 +2,7 @@ package com.headius.jo;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -124,9 +125,16 @@ public class JoLibrary implements Library{
         }
         
         @JRubyMethod(module = true)
-        public static IRubyObject chan(ThreadContext context, IRubyObject self, Block block) {
+        public static IRubyObject chan(ThreadContext context, IRubyObject self) {
             Ruby runtime = context.runtime;
             return new JoChannel(runtime, (RubyClass)runtime.getClassFromPath("Jo::Channel"), new SynchronousQueue<IRubyObject>(true));
+        }
+        
+        @JRubyMethod(module = true)
+        public static IRubyObject chan(ThreadContext context, IRubyObject self, IRubyObject size) {
+            Ruby runtime = context.runtime;
+            int capacity = (int)size.convertToInteger().getLongValue();
+            return new JoChannel(runtime, (RubyClass)runtime.getClassFromPath("Jo::Channel"), new ArrayBlockingQueue<IRubyObject>(capacity, true));
         }
         
         @JRubyMethod(module = true)
