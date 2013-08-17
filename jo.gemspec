@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "An implementation of goroutines and channels (from the Go language) for Ruby"
   spec.homepage      = "https://github.com/headius/jo"
   spec.license       = "MIT"
+  spec.platform      = "java"
 
   spec.files         = `git ls-files`.split($/) + ["target/jo-#{Jo::VERSION}.jar"]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
