@@ -18,6 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
 require 'jo'
 
 include Jo
@@ -48,6 +49,7 @@ jo {ponger(c)}
 jo {printer(c)}
 
 gets # prevent exit
+```
 
 ## Contributing
 
