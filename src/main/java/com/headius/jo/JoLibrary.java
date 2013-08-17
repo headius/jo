@@ -37,8 +37,8 @@ public class JoLibrary implements Library{
             }
         });
         jo.setInternalVariable("executor", executor);
-        RubyClass joFuture = runtime.defineClass("Future", runtime.getObject(), ObjectAllocator.NOT_ALLOCATABLE_ALLOCATOR);
-        RubyClass joChannel = runtime.defineClass("Channel", runtime.getObject(), ObjectAllocator.NOT_ALLOCATABLE_ALLOCATOR);
+        RubyClass joFuture = jo.defineClassUnder("Future", runtime.getObject(), ObjectAllocator.NOT_ALLOCATABLE_ALLOCATOR);
+        RubyClass joChannel = jo.defineClassUnder("Channel", runtime.getObject(), ObjectAllocator.NOT_ALLOCATABLE_ALLOCATOR);
         
         jo.defineAnnotatedMethods(JoMethods.class);
         joFuture.defineAnnotatedMethods(JoFuture.class);
